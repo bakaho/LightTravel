@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 363d1511b3225714d82e930854d7b247
+timeCreated: 1526987529
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hiragino Sans
+  fontNames:
+  - Hiragino Sans
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
