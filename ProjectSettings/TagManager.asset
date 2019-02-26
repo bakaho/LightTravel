@@ -13,6 +13,7 @@ TagManager:
   - moveBar1
   - can'tmove2
   - moveBar2
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Character
   - FarWalls
   - trigger
-  - 
+  - Ground
   - 
   - 
   - 
