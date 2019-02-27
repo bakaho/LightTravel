@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	public GameObject bgm;
 
+    public int counter = 0;
+    bool firstTouch = true;
+
 	//get for Sound Effects
 	private AudioSource adosrcPlayer;
 	private AudioSource adosrcBGM;
@@ -34,6 +37,20 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        if(firstTouch && Input.touchCount >= 2){
+            //play sound
+            counter = 60;
+            firstTouch = false;
+        }
+        if(counter>0){
+            CameraTilt.canMove = false;
+            counter-=1;
+        }else if(counter == 0){
+            CameraTilt.canMove = true;
+            firstTouch = true;
+        }
+
 			
 	}
 

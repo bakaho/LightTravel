@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraTilt : MonoBehaviour {
+    public static bool canMove = true;
+
     public float camSpeed = 1f;
     Vector3 accSmooth;
     public float AccelerometerUpdateInterval = 0.01f;
@@ -49,14 +51,17 @@ public class CameraTilt : MonoBehaviour {
         {
             turnX = xGap * 20;
         }
-            
+
         //if(xRot < -1f){
         //    xRot = -1f;
         //}else if(xRot > 1f){
         //    xRot = 1f;
         //}
         //transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(-yRot, -xRot, 0, camSpeed), Time.deltaTime * camSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30+turnY,-turnX,0), Time.deltaTime * camSpeed);
+        if (canMove)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30 + turnY, -turnX, 0), Time.deltaTime * camSpeed);
+        }
             
 	}
 

@@ -8,6 +8,7 @@ public class myLight : NetworkBehaviour {
     //move
     public moveControl joystick;
     public float speed = 15;
+    public static bool inControl = true;
     //cam
     public Transform CameraTransform;
     private Vector3 cameraOffset;
@@ -40,7 +41,7 @@ public class myLight : NetworkBehaviour {
         float h = joystick.Horizontal();
         float v = joystick.Vertical();
         bool move = (Mathf.Abs(v - 0) > 0.01f) || (Mathf.Abs(h - 0) > 0.01f);
-        if(move){
+        if(move && CameraTilt.canMove && inControl){
             //Vector3 newPos = transform.position + new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
             transform.position += new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
 
@@ -48,12 +49,7 @@ public class myLight : NetworkBehaviour {
         Vector3 newCamPos = transform.position + cameraOffset;
         CameraTransform.position = Vector3.Slerp(CameraTransform.position, newCamPos, smoothFactor);
 
-        //transform.position += new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
 
-        //float fXMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150f;
-        //float fZMove = Input.GetAxis("Vertical") * Time.deltaTime * 150f;
-
-        //transform.Translate(fXMove, 0, fZMove);
 		
 	}
 }
