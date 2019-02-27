@@ -16,6 +16,7 @@ TagManager:
   - Fire
   - joystick
   - uiCam
+  - puz1
   layers:
   - Default
   - TransparentFX

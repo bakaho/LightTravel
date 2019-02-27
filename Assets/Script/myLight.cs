@@ -52,4 +52,26 @@ public class myLight : NetworkBehaviour {
 
 		
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("puz1"))
+        {
+            print("it works");
+
+
+        }
+
+
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("puz1"))
+        {
+            print("it works");
+
+
+        }
+    }
 }
