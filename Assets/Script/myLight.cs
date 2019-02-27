@@ -58,8 +58,6 @@ public class myLight : NetworkBehaviour {
         if (other.gameObject.CompareTag("puz1"))
         {
             print("it works");
-
-
         }
 
 
