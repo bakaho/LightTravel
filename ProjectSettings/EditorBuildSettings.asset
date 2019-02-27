@@ -11,28 +11,34 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/before.unity
     guid: 95e29d062be994ec9b7b3847caf837a4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/beforeE.unity
     guid: efbe78d4143c94126826fb5bc73139ef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/BeforeOpen.unity
     guid: 0ebf30fbf0d9c405095b6276db079c46
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/level1v1.unity
     guid: f31adedbb46ca46ebb0c862bdf36feb9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/1to2.unity
     guid: 894b51efcef664d819b37ac3af9f6b1d
   - enabled: 0
     path: Assets/Scene/testlevel2.unity
     guid: bea6b179e164b48e5bf78938dd4db58d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/level2v1.unity
     guid: cd3dad47584964a61ac9b7877fe60d4b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/2to3.unity
     guid: c043843b786f74aa99de42db4a067671
+  - enabled: 0
+    path: Assets/Scene/TLtest1.unity
+    guid: 63c021cc1343a4ea5aa99f332920238e
+  - enabled: 1
+    path: Assets/Scene/AndriodLight.unity
+    guid: 30b3d7cf52ea24cccb7beed5cd7f0ee2
   m_configObjects: {}

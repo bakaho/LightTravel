@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class myLight : MonoBehaviour {
+public class myLight : NetworkBehaviour {
 
     //move
     public moveControl joystick;
@@ -22,9 +23,19 @@ public class myLight : MonoBehaviour {
         CameraTransform = GameObject.FindWithTag("MainCamera").transform;
         cameraOffset = CameraTransform.transform.position - new Vector3(0f, 0f, 0f);
 	}
-	
+
+	public override void OnStartLocalPlayer()
+	{
+        //base.OnStartLocalPlayer();
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(true);
+	}
+
 	// Update is called once per frame
 	void Update () {
+        if(!isLocalPlayer){
+            return;
+        }
 
         float h = joystick.Horizontal();
         float v = joystick.Vertical();
