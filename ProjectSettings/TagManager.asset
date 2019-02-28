@@ -17,6 +17,7 @@ TagManager:
   - joystick
   - uiCam
   - puz1
+  - MainCharacter
   layers:
   - Default
   - TransparentFX

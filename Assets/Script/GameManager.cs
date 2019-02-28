@@ -12,6 +12,15 @@ public class GameManager : MonoBehaviour {
 	public GameObject pausedBtn;
 	public GameObject player;
 	public GameObject bgm;
+    public GameObject playerLight;
+    public GameObject flwCam;
+
+    //levels
+    public bool[] passedItems;
+    public GameObject[] puzMags;
+    //level1
+    public GameObject l1Hat;
+
 
     public int counter = 0;
     bool firstTouch = true;
@@ -19,6 +28,8 @@ public class GameManager : MonoBehaviour {
 	//get for Sound Effects
 	private AudioSource adosrcPlayer;
 	private AudioSource adosrcBGM;
+    public AudioClip finishSound;
+    public AudioSource adosrcFinish;
 
 	//edit button text
 	public Text btnBGMtext;
@@ -30,9 +41,14 @@ public class GameManager : MonoBehaviour {
 	static public int level = 1;
 
 
-	void Start(){
-		adosrcPlayer = player.GetComponent<AudioSource>();
-		adosrcBGM = bgm.GetComponent<AudioSource>();
+    void Awake(){
+        adosrcFinish = GetComponent<AudioSource>();
+        adosrcPlayer = player.GetComponent<AudioSource>();
+        adosrcBGM = bgm.GetComponent<AudioSource>();
+    }
+    void Start(){
+		//playerLight = 
+
 	}
 
 	// Update is called once per frame
@@ -42,6 +58,7 @@ public class GameManager : MonoBehaviour {
             //play sound
             counter = 60;
             firstTouch = false;
+            checkCorrect();
         }
         if(counter>0){
             CameraTilt.canMove = false;
@@ -54,7 +71,24 @@ public class GameManager : MonoBehaviour {
 			
 	}
 
-    //public void checkCorrect
+    public void checkCorrect(){
+        if(myLight.theTriggerOne == 0 && !passedItems[0]){
+            //if correct
+            if (Mathf.Abs((float)(flwCam.transform.position.x - 95.3)) < 3
+                && Mathf.Abs((float)(flwCam.transform.position.z + 75)) < 3)
+               //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.x - 27)) < 3
+               //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.y + 0.5)) < 3)
+            {
+                adosrcFinish.PlayOneShot(finishSound);
+                print("playsound");
+                l1Hat.SetActive(true);
+                puzMags[0].GetComponent<puzzleManager>().thisPiece += 1;
+                puzMags[0].GetComponent<puzzleManager>().updateNow = true;
+                passedItems[0] = true;
+            }
+        }
+        
+    }
 
 	//pause button
 	public void pause(){

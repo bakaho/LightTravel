@@ -63,16 +63,16 @@ public class myLight : NetworkBehaviour {
         }
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("puz1"))
-        {
-            theTriggerOne = 0;
-        }
-    }
+    //void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("puz1"))
+    //    {
+    //        theTriggerOne = 0;
+    //    }
+    //}
 
-    void OnTriggerExit(Collider other)
-    {
-        theTriggerOne = -1;
-    }
+    //void OnTriggerExit(Collider other)
+    //{
+    //    theTriggerOne = -1;
+    //}
 }
