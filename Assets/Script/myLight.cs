@@ -12,6 +12,8 @@ public class myLight : NetworkBehaviour {
     //cam
     public Transform CameraTransform;
     private Vector3 cameraOffset;
+    //hit
+    public static int theTriggerOne = -1;
 
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.01f;
@@ -57,19 +59,20 @@ public class myLight : NetworkBehaviour {
     {
         if (other.gameObject.CompareTag("puz1"))
         {
-            print("it works");
+            theTriggerOne = 0;
         }
-
-
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("puz1"))
         {
-            print("it works");
-
-
+            theTriggerOne = 0;
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        theTriggerOne = -1;
     }
 }

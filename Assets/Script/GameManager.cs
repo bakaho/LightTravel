@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour {
 			
 	}
 
+    //public void checkCorrect
+
 	//pause button
 	public void pause(){
 		pausedMenu.SetActive (true);
