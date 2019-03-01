@@ -8,6 +8,8 @@ public class moveControl : MonoBehaviour
     public float xDel, yDel;
     public Camera myCam;
     bool moveAllow = false;
+    bool moveChecked = false;
+    float touchStartTime = 0f;
     Touch initTouch;
     Vector3 initMouse;
 
@@ -23,6 +25,7 @@ public class moveControl : MonoBehaviour
         {
             initMouse = Input.mousePosition;
             moveAllow = true;
+            touchStartTime = Time.time;
 
             //Ray ray = uiCam.ScreenPointToRay(Input.mousePosition);
             //RaycastHit hit = new RaycastHit();
@@ -40,7 +43,9 @@ public class moveControl : MonoBehaviour
             float xMoved = Input.mousePosition.x - initMouse.x;
             float yMoved = Input.mousePosition.y - initMouse.y;
             //float distance = Mathf.Sqrt((xMoved * xMoved) + (xMoved * xMoved));
-            if (moveAllow)
+            moveChecked = (moveAllow && Mathf.Abs(xMoved) > 5 && Mathf.Abs(yMoved) > 5);
+
+            if (moveChecked)
             {
 
                 if (xMoved > 50)
@@ -70,22 +75,35 @@ public class moveControl : MonoBehaviour
                 }
 
             }
+            if(Mathf.Abs(xMoved) < 5 && Mathf.Abs(yMoved) < 5){
+                float deltatime = Time.time - touchStartTime;
+                if (deltatime > 2){
+                    myLight.shapeChange = true;
+                    myLight.lightShape = 0;
+                    CameraTilt.canMove = true;
+                    myLight.inControl = true;
+                }
+            }
 
         }
         //if let go, start over again
         else if (Input.GetMouseButtonUp(0))
         {
             moveAllow = false;
+            moveChecked = false;
         }
+        //print("this: " + moveChecked);
+        print("x: " + xDel);
+        print("y: " + yDel);
 
 
     }
 
     public float Horizontal()
     {
-        if (moveAllow)
+        if (moveChecked)
         {
-            print("0");
+            //print("0");
             return xDel;
 
         }
@@ -99,7 +117,7 @@ public class moveControl : MonoBehaviour
 
     public float Vertical()
     {
-        if (moveAllow)
+        if (moveChecked)
         {
             //print("2");
             return yDel;

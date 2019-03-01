@@ -18,6 +18,8 @@ TagManager:
   - uiCam
   - puz1
   - MainCharacter
+  - puz2
+  - puz3
   layers:
   - Default
   - TransparentFX

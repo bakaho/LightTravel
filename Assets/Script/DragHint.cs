@@ -55,12 +55,16 @@ public class DragHint : MonoBehaviour
             }
 
         }
+
+
         //if let go, start over again
         else if (Input.GetMouseButtonUp(0))
         {
             myLight.inControl = true;
             rotateAllow = false;
         }
+
+        print(myLight.inControl);
 
 
 

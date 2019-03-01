@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour {
     public GameObject playerLight;
     public GameObject flwCam;
 
+    //testing
+    public GameObject txt3;
+    public Button showShape;
+
     //levels
     public bool[] passedItems;
     public GameObject[] puzMags;
@@ -59,7 +63,9 @@ public class GameManager : MonoBehaviour {
             counter = 60;
             firstTouch = false;
             checkCorrect();
+            checkChange();
         }
+
         if(counter>0){
             CameraTilt.canMove = false;
             counter-=1;
@@ -68,13 +74,22 @@ public class GameManager : MonoBehaviour {
             firstTouch = true;
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            myLight.inControl = true;
+        }
+
+        if(myLight.showT3){
+            txt3.SetActive(true);
+        }
+
 			
 	}
 
     public void checkCorrect(){
         if(myLight.theTriggerOne == 0 && !passedItems[0]){
             //if correct
-            if (Mathf.Abs((float)(flwCam.transform.position.x - 95.3)) < 3
+            if (Mathf.Abs((float)(flwCam.transform.position.x - 83.3)) < 3
                 && Mathf.Abs((float)(flwCam.transform.position.z + 75)) < 3)
                //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.x - 27)) < 3
                //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.y + 0.5)) < 3)
@@ -85,9 +100,21 @@ public class GameManager : MonoBehaviour {
                 puzMags[0].GetComponent<puzzleManager>().thisPiece += 1;
                 puzMags[0].GetComponent<puzzleManager>().updateNow = true;
                 passedItems[0] = true;
+                myLight.theTriggerOne = -1;
+                myLight.inControl = true;
             }
         }
         
+    }
+
+    public void checkChange(){
+        if (Mathf.Abs((float)(flwCam.transform.position.x - 83.3)) < 3
+                && Mathf.Abs((float)(flwCam.transform.position.z + 75)) < 3)
+        //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.x - 27)) < 3
+        //&& Mathf.Abs((float)(flwCam.transform.rotation.eulerAngles.y + 0.5)) < 3)
+        {
+            showShape.gameObject.SetActive(true);
+        }
     }
 
 	//pause button
